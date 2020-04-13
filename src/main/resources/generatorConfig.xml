@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--mysql 连接数据库jar 这里选择自己本地位置-->
+    <classPathEntry
+            location="D:\space\maven\maven-repository\mysql\mysql-connector-java\8.0.17\mysql-connector-java-8.0.17.jar"/>
+    <context id="testTables" targetRuntime="MyBatis3">
+        <!--不在追加xml-->
+        <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin"/>
+
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/mall?characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone=UTC"
+                        userId="root"
+                        password="ZZP1234">
+        </jdbcConnection>
+        <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true
+         时把JDBC DECIMAL 和
+           NUMERIC 类型解析为java.math.BigDecimal -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 生成模型(PO)的包名和位置 -->
+        <javaModelGenerator targetPackage="com.zzp.mall.pojo"
+                            targetProject="src/main/java">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="true"/>
+            <!-- 从数据库返回的值被清理前后的空格 -->
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- 生成映射文件的包名和位置-->
+        <sqlMapGenerator targetPackage="main.resources.mappers"
+                         targetProject="src">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!-- 生成DAO的包名和位置-->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.zzp.mall.dao"
+                             targetProject="src/main/java">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是
+      实体类名 ,enableCountByExample 不生成分页方法 -->
+        <!--<table tableName="mall_order" domainObjectName="Order" enableCountByExample="false"-->
+        <!--enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false" >-->
+        <!--</table>-->
+
+        <!--<table tableName="mall_order_item" domainObjectName="OrderItem" enableCountByExample="false"-->
+        <!--enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false" >-->
+        <!--</table>-->
+
+        <!--<table tableName="mall_pay_info" domainObjectName="PayInfo" enableCountByExample="false"-->
+        <!--enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false" >-->
+        <!--</table>-->
+
+        <!--<table tableName="mall_user" domainObjectName="User" enableCountByExample="false"-->
+        <!--enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false" >-->
+        <!--</table>-->
+
+
+        <!--<table tableName="mall_category" domainObjectName="Category" enableCountByExample="false"-->
+        <!--enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false" >-->
+        <!--</table>-->
+
+        <!--<table tableName="mall_product" domainObjectName="Product" enableCountByExample="false"-->
+               <!--enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">-->
+            <!--<columnOverride column="detail" jdbcType="VARCHAR"></columnOverride>-->
+            <!--<columnOverride column="sub_images" jdbcType="VARCHAR"></columnOverride>-->
+        <!--</table>-->
+
+        <table tableName="mall_shipping" domainObjectName="Shipping" enableCountByExample="false"
+        enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false" >
+        </table>
+
+    </context>
+</generatorConfiguration>
